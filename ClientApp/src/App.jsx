@@ -10,5 +10,5 @@ import { SearchResults } from './pages/SearchResults'
 import './custom.scss'
 
 export function App() {
-  return <SignUp />
+  return <SearchResults />
 }

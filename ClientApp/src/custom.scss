@@ -122,7 +122,7 @@ main.page {
 
 header {
   background: red;
-  color: white;
+  color: rgb(184, 180, 180);
   text-align: center;
 }
 
@@ -223,6 +223,13 @@ hr {
   }
 }
 
+.pagesearcresults {
+  color: red;
+}
+
+.resultssearchresults {
+  color: red;
+}
 .stars {
   --rating: 0;
   --percent: calc(var(--rating) / 5 * 100%);
@@ -456,7 +463,6 @@ h2 {
   opacity: 0.6rem;
   color: red;
   font-family: 'Brush Script MT';
-  color: white;
 }
 
 hr {

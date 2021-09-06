@@ -1,8 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+
+function SingleDateLocationFromList(props) {
+  return (
+    <li>
+      <h2>{props.datelocation.name}</h2>
+      <p>
+        <span
+          className="stars"
+          style={{ '--rating': 4.7 }}
+          aria-label="Star rating of this location is 4.7 out of 5."
+        ></span>
+        (2,188)
+      </p>
+      <address>{props.datelocation.address}</address>
+    </li>
+  )
+}
 
 export function SearchResults() {
-  return (
-    <>
+  const [dateLocation, setDateLocations] = useState([])
+  useEffect(() => {
+    async function loadDateLocations() {
+      const response = await fetch('/api/DateLocation')
+      if (response.ok) {
+        const json = await response.json()
+        setDateLocations(json)
+      }
+    }
+    loadDateLocations()
+  }, [])
+
+    return (
+         <>
       <header>
          <i className="title">Rate my Date! (location)</i>
             <nav>
@@ -11,41 +41,16 @@ export function SearchResults() {
               </a>
             </nav>
       </header>
-      <main className="page">
-        <nav>
-          <h2> 
-                 <i className="homepagenav">Search Results:</i>
-             (2)</h2>
-        </nav>
-        <p>
-           <i className="reviewtext">
-             1. <a href="./src/pages/LocationPage">
-                 <i>John's Steak House</i>
-              </a><hr></hr>
-             </i>
-             <hr></hr>
-               <span
-            className="stars"
-            style={{ '--rating': 4.7 }} 
-            aria-label="Star rating of this location is 4.7 out of 5."
-          ></span>
-          <i className="reviewtext">(2,188)</i> <hr></hr>
-      <i className="reviewtext">
-             2. <a href="./src/pages/LocationPage">
-                 <i>John's Fun House</i>
-              </a><hr></hr>
-             </i>
-             <hr></hr>
-               <span
-            className="stars"
-            style={{ '--rating': 3.8 }} 
-            aria-label="Star rating of this location is 3.8 out of 5."
-          ></span><i className="reviewtext">(150)</i>
-        </p>
-        
-        <hr />
-        
-        
+      <main className="pagesearcresults">
+        Here are your search results:
+        <ul className="resultssearchresults">
+          {dateLocation.map((datelocation) => (
+            <SingleDateLocationFromList
+             key={datelocation.id}
+             datelocation={datelocation}
+             />    
+          ))}   
+           </ul>
       </main>
       <footer>
         <p>
@@ -54,4 +59,4 @@ export function SearchResults() {
       </footer>
     </>
   )
-}
+  }

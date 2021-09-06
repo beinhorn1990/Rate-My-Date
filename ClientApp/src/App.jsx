@@ -1,14 +1,19 @@
 import React from 'react'
-import { Locations } from './pages/LocationPage'
-import { Homepage } from './pages/Homepage'
-import { AdvancedSearch } from './pages/AdvancedSearch'
-import { SignIn } from './pages/SignIn'
-import { SignUp } from './pages/SignUp'
+import { Route, Switch } from 'react-router-dom'
+
+import './custom.scss'
 import { NewLocation } from './pages/NewLocation'
 import { SearchResults } from './pages/SearchResults'
 
-import './custom.scss'
-
 export function App() {
-  return <SearchResults />
+  return (
+    <Switch>
+      <Route exact path="/">
+        <SearchResults />
+      </Route>
+      <Route exact path="/new">
+        <NewLocation />
+      </Route>
+    </Switch>
+  )
 }

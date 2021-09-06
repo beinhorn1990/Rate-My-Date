@@ -1,6 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 export function NewLocation() {
+  const history = useHistory() 
+
+const [newLocation, setNewLocation] = useState({
+    name: '',
+    description: '',
+    address: '',
+    telephone: '',
+  })
+
+function handleStringFieldChange(event){
+  const value = event.target.value
+  const fieldName = event.target.name
+
+const updatedLocation = { ...newLocation, [fieldName]: value }
+
+setNewLocation(updatedLocation)
+}
+
+async function handleFormSubmit(event) {
+  event.preventDefault()
+
+  const response = await fetch('/api/DateLocation', {
+    method: 'POST',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify(newLocation),
+  })
+
+  const json = await response.json()
+
+  history.push('/')
+}
+
   return (
     <>
       <header>
@@ -11,59 +44,50 @@ export function NewLocation() {
               </a>
             </nav>
       </header>
-      <main className="page">
+       <main className="page">
         <nav>
-         <h2>Add a New Date Location!</h2>
+          <Link to="/">
+            <i className="fa fa-home"></i>
+          </Link>
+          <h2>Add a Date Location</h2>
         </nav>
-        <form action="#">
+        <form onSubmit={handleFormSubmit}>
           <p className="form-input">
-           <p className="labels"> <label htmlFor="name">Date Location Name</label></p>
-            <input type="text" name="name" />
-             <span className="note">
-              Enter the name of the date location.
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={newLocation.name}
+              onChange={handleStringFieldChange}
+            />
+          </p>
+          <p className="form-input">
+            <label htmlFor="description">Description</label>
+            <textarea
+              name="description"
+              value={newLocation.description}
+              onChange={handleStringFieldChange}
+            ></textarea>
+            <span className="note">
+              Enter a brief description of the restaurant.
             </span>
           </p>
           <p className="form-input">
-           <p className="labels"> <label htmlFor="name">Address</label></p>
-            <input type="text" name="name" />
-            <span className="note">
-              Enter the address of the date location.
-            </span>
+            <label htmlFor="name">Address</label>
+            <textarea
+              name="address"
+              value={newLocation.address}
+              onChange={handleStringFieldChange}
+            ></textarea>
           </p>
           <p className="form-input">
-            <p className="labels"><label htmlFor="name">Web URL</label></p>
-            <input type="text" name="name" />
-            <span className="note">
-              Enter the web address of the date location.
-            </span>
-          </p>
-           <p className="form-input">
-            <p className="labels"><label htmlFor="name">Contact Telephone</label></p>
-            <input type="tel" name="telephone" />
-            <span className="note">
-              Enter the owner's or manager's telephone number for the date location.
-            </span>
-          </p>
-          <p className="form-input">
-            <p className="labels"><label htmlFor="name">Contact E-mail</label></p>
-            <input type="tel" name="telephone" />
-            <span className="note">
-            Enter the owner's or manager's e-mail address for the date location.
-            </span>
-          </p>
-          <p className="form-input">
-            <p className="labels"><label htmlFor="description">Description</label></p>
-            <textarea name="description"></textarea>
-            <span className="note">
-              Enter a brief description of the date location.
-            </span>
-          </p>
-          <p className="form-input">
-            <p className="labels"><label htmlFor="picture">Picture</label></p>
-            <input type="file" name="picture" />
-            <span className="note">
-              Submit a picture of the date location (optional).
-            </span>
+            <label htmlFor="name">Telephone</label>
+            <input
+              type="tel"
+              name="telephone"
+              value={newLocation.telephone}
+              onChange={handleStringFieldChange}
+            />
           </p>
           <p>
             <input type="submit" value="Submit" />
@@ -72,10 +96,9 @@ export function NewLocation() {
       </main>
       <footer>
         <p>
-         <i className="locationsfooter"> Built in 2021. Contact <a href="mailto:BEinhorn90@gmail.com">Brendan Einhorn</a> with any questions or concerns.</i>
+          <i className="locationsfooter"> Built in 2021. Contact <a href="mailto:BEinhorn90@gmail.com">Brendan Einhorn</a> with any questions or concerns.</i>
         </p>
       </footer>
     </>
   )
 }
-

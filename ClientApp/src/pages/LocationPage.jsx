@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export function Locations() {
+export function Location() {
   return (
     <>
       <header><i className="title">Rate my Date! (location)</i>
@@ -12,36 +13,25 @@ export function Locations() {
       </header>
       <main className="page">
         <nav>
-          <h2>Showing Date Location Information for: John's Steak House
-              
+          <Link to="/">
+            <i className="fa fa-home"></i>
+            </Link>
+          <h2>Showing Date Location Information for: John's Steak House</h2>
+              </nav>
+            <p>
               <span
             className="stars"
             style={{ '--rating': 4.7 }} 
             aria-label="Star rating of this location is 4.7 out of 5."
-          ></span>(2,188)</h2>
-        </nav>
-        <p>
-           <i className="reviewtext">
-             - John's Steak House<hr></hr>
-             -123 Main St<hr></hr>
-              Capital City, Montana<hr></hr>
-             <hr></hr>
-             - Website: <a href="www.JohnsSteakHouse.com">www.JohnsSteakHouse.com </a> <hr></hr>
-             - Phone: <a href="tel:+1234567890">123-456-7890</a><hr></hr>
-             - E-mail: <a href="mailto:manager@JohnsSteakHouse.com">manager@JohnsSteakHouse.com</a><hr></hr>
-             <hr></hr>
-             - John's Steak House is the world famous steak house located
-               in city center.
-             John's Steak House provides a number of high-quality lunch
-             and dinner options to fill a diverse 
-             number of tastes, not just those who like staeak!</i>
-      
-        </p>
+          ></span>(2,188)
+        </p> 
+      <address>8005 Benjamin Rd, Tampa, FL 33634</address>
         <hr />
-        <h3><i className="reviewtextheader">Reviews for John's Steak House!</i></h3>
-
+        <h3>Reviews for John's Steak House</h3>
+        <ul className="reviews">
+          <li>
             <div className="author">
-              Gavin said: 
+              Gavin said: <em>Really good.</em>
             </div>
             <div className="body">
               <p>Yummy!</p>
@@ -54,9 +44,10 @@ export function Locations() {
               ></span>
               <time>Tuesday, July 7th, 2020 at 3:10 AM</time>
             </div>
-        
+          </li>
+          <li>
             <div className="author">
-              Jason said: 
+              Jason said: <em>The tameles are to die for!</em>
             </div>
             <div className="body">
               <p>
@@ -71,11 +62,12 @@ export function Locations() {
                 className="stars"
                 style={{ '--rating': 4.7 }}
                 aria-label="Star rating of this location is 4.7 out of 5."
-              ></span><hr></hr>
+              ></span>
               <time>Tuesday, July 7th, 2020 at 3:10 AM</time>
             </div>
-       
-        <h3><i className="reviewtextheader">Enter your own review</i></h3>
+          </li>
+        </ul>
+        <h3>Enter your own review</h3>
         <form action="#">
           <p className="form-input">
             <label htmlFor="summary">Summary</label>

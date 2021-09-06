@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import { Link } from 'react-router-dom'
 
 function SingleDateLocationFromList(props) {
   return (
@@ -44,6 +44,9 @@ export function SearchResults() {
       <header>
          <i className="title">Rate my Date! (location)</i>
             <nav>
+              <Link to="/new">
+                Date Location
+                </Link>
               <a href="./src/pages/Homepage">
                  <i className="homepagenav">Return to the Home Page!</i>
               </a>

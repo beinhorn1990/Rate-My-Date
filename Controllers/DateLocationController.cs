@@ -31,11 +31,18 @@ namespace RateMyDate.Controllers
         // Returns a list of all your DateLocations
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DateLocation>>> GetDateLocations()
+        public async Task<ActionResult<IEnumerable<DateLocation>>> GetDateLocations(string filter)
         {
             // Uses the database context in `_context` to request all of the DateLocations, sort
             // them by row id and return them as a JSON array.
-            return await _context.DateLocations.OrderBy(row => row.Id).ToListAsync();
+             if (filter == null)
+            {
+                return await _context.DateLocations.ToListAsync();
+            }
+            else
+            {
+                return await _context.DateLocations.Where(datelocation => datelocation.Name.Contains(filter)).ToListAsync();
+            }
         }
 
         // GET: api/DateLocation/5

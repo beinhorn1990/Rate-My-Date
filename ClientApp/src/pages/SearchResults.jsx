@@ -19,17 +19,25 @@ function SingleDateLocationFromList(props) {
 }
 
 export function SearchResults() {
+  const [filterText, setFilterText] = useState('')
   const [dateLocation, setDateLocations] = useState([])
+  
   useEffect(() => {
     async function loadDateLocations() {
-      const response = await fetch('/api/DateLocation')
-      if (response.ok) {
+      const url =
+        filterText.length === 0
+        ? `/api/DateLocation`
+        : `/api/DateLocation?filter=${filterText}`
+
+        const response = await fetch(url)
+    
         const json = await response.json()
+
         setDateLocations(json)
-      }
     }
-    loadDateLocations()
-  }, [])
+    
+     loadDateLocations()
+  }, [filterText])
 
     return (
          <>
@@ -43,6 +51,17 @@ export function SearchResults() {
       </header>
       <main className="pagesearcresults">
         Here are your search results:
+        <form className="search">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={filterText}
+            onChange={function (event) {
+              setFilterText(event.target.value)
+            }}
+          />
+        </form>
+
         <ul className="resultssearchresults">
           {dateLocation.map((datelocation) => (
             <SingleDateLocationFromList

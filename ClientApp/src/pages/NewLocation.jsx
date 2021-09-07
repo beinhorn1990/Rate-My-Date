@@ -4,6 +4,8 @@ import { Link, useHistory } from 'react-router-dom'
 export function NewLocation() {
   const history = useHistory() 
 
+const [errorMessage, setErrorMessage] = useState()
+
 const [newLocation, setNewLocation] = useState({
     name: '',
     description: '',
@@ -31,7 +33,11 @@ async function handleFormSubmit(event) {
 
   const json = await response.json()
 
-  history.push('/')
+  if (response.status === 400) {
+    setErrorMessage(Object.values(json.errors).join(' '))
+  } else {
+    history.push('/')
+  }
 }
 
   return (
@@ -52,6 +58,9 @@ async function handleFormSubmit(event) {
           <h2>Add a Date Location</h2>
         </nav>
         <form onSubmit={handleFormSubmit}>
+          {
+           errorMessage ? <p>{errorMessage}</p> : null
+          }
           <p className="form-input">
             <label htmlFor="name">Name</label>
             <input

@@ -45,7 +45,7 @@ export function SearchResults() {
          <i className="title">Rate my Date! (location)</i>
             <nav>
               <Link to="/new">
-                Date Location
+                Add a Date Location
                 </Link>
               <a href="./src/pages/Homepage">
                  <i className="homepagenav">Return to the Home Page!</i>

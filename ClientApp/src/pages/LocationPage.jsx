@@ -1,7 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState} from 'react'
+import { Link, useParams } from 'react-router-dom'
 
 export function Location() {
+ const params = useParams()
+  const id = params.id
+
+  const [location, setLocation] = useState({
+    name: '',
+    description: '',
+    address: '',
+    telephone: '',
+  })
+
+  useState(() => {
+    const fetchLocation = async () => {
+      const response = await fetch(`/api/DateLocation/${id}`)
+      const apiData = await response.json()
+
+      setLocation(apiData)
+    }
+
+    fetchLocation()
+  }, [id])
+
   return (
     <>
       <header><i className="title">Rate my Date! (location)</i>
@@ -15,19 +36,21 @@ export function Location() {
         <nav>
           <Link to="/">
             <i className="fa fa-home"></i>
-            </Link>
-          <h2>Showing Date Location Information for: John's Steak House</h2>
-              </nav>
-            <p>
-              <span
+          </Link>
+          <h2>{location.name}</h2>
+        </nav>
+        <p>
+          <span
             className="stars"
-            style={{ '--rating': 4.7 }} 
+            style={{ '--rating': 4.7 }}
             aria-label="Star rating of this location is 4.7 out of 5."
-          ></span>(2,188)
-        </p> 
-      <address>8005 Benjamin Rd, Tampa, FL 33634</address>
+          ></span>
+          (2,188)
+        </p>
+        <address>{location.address}</address>
+        <p>{location.description}</p>
         <hr />
-        <h3>Reviews for John's Steak House</h3>
+        <h3>Reviews for {location.name}</h3>
         <ul className="reviews">
           <li>
             <div className="author">

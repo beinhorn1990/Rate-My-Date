@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { Location } from './pages/LocationPage'
 
 import './custom.scss'
 import { NewLocation } from './pages/NewLocation'
@@ -13,6 +14,9 @@ export function App() {
       </Route>
       <Route exact path="/new">
         <NewLocation />
+      </Route>
+      <Route exact path="/SearchResults/:id">
+        <Location />
       </Route>
     </Switch>
   )

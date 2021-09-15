@@ -15,6 +15,7 @@ namespace RateMyDate.Models
 
         // Add database tables here
         public DbSet<DateLocation> DateLocations { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

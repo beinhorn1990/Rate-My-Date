@@ -37,11 +37,11 @@ namespace RateMyDate.Controllers
             // them by row id and return them as a JSON array.
              if (filter == null)
             {
-                return await _context.DateLocations.ToListAsync();
+                return await _context.DateLocations.OrderBy(datelocation => datelocation.Name).Include(datelocation => datelocation.Reviews).ToListAsync();
             }
             else
             {
-                return await _context.DateLocations.Where(datelocation => datelocation.Name.Contains(filter)).ToListAsync();
+                 return await _context.DateLocations.OrderBy(datelocation => datelocation.Name).Where(datelocation => datelocation.Name.Contains(filter)).Include(datelocation => datelocation.Reviews).ToListAsync();
             }
         }
 
@@ -55,17 +55,18 @@ namespace RateMyDate.Controllers
         public async Task<ActionResult<DateLocation>> GetDateLocation(int id)
         {
             // Find the dateLocation in the database using `FindAsync` to look it up by id
-            var dateLocation = await _context.DateLocations.FindAsync(id);
+             var datelocation = await _context.DateLocations.Include(datelocation => datelocation.Reviews).Where(datelocation => datelocation.Id == id).FirstOrDefaultAsync();
+
 
             // If we didn't find anything, we receive a `null` in return
-            if (dateLocation == null)
+            if (datelocation == null)
             {
                 // Return a `404` response to the client indicating we could not find a dateLocation with this id
                 return NotFound();
             }
 
             //  Return the dateLocation as a JSON object.
-            return dateLocation;
+            return datelocation;
         }
 
         // PUT: api/DateLocation/5

@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom'
 function SingleDateLocationFromList(props) {
   return (
     <li>
-      <h2>{props.datelocation.name}</h2>
+      <h2>
+        <Link to={`/DateLocation/${props.datelocation.id}`}>
+        {props.datelocation.name}
+        </Link>
+        </h2>
       <p>
         <span
           className="stars"
           style={{ '--rating': 4.7 }}
           aria-label="Star rating of this location is 4.7 out of 5."
         ></span>
-        (2,188)
+       ({props.datelocation.reviews.length})
       </p>
       <address>{props.datelocation.address}</address>
     </li>
@@ -45,7 +49,7 @@ export function SearchResults() {
          <i className="title">Rate my Date! (location)</i>
             <nav>
               <Link to="/new">
-                Add a Date Location
+               <i className="addadatelocation"> Add a Date Location</i>
                 </Link>
               <a href="./src/pages/Homepage">
                  <i className="homepagenav">Return to the Home Page!</i>
@@ -53,7 +57,6 @@ export function SearchResults() {
             </nav>
       </header>
       <main className="pagesearcresults">
-        Here are your search results:
         <form className="search">
           <input
             type="text"
@@ -65,6 +68,7 @@ export function SearchResults() {
           />
         </form>
 
+        <i className="hereareyoursearchresults">Here are your search results:</i> 
         <ul className="resultssearchresults">
           {dateLocation.map((datelocation) => (
             <SingleDateLocationFromList

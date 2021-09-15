@@ -52,15 +52,13 @@ async function handleFormSubmit(event) {
       </header>
        <main className="page">
         <nav>
-          <Link to="/">
-            <i className="fa fa-home"></i>
-          </Link>
-          <h2>Add a Date Location</h2>
+         
+          <h2><i className="addadatelocation">Add a Date Location</i></h2>
         </nav>
         <form onSubmit={handleFormSubmit}>
-          {
+       <i className="errormessagenewlocation">   {
            errorMessage ? <p>{errorMessage}</p> : null
-          }
+          }</i>
           <p className="form-input">
             <label htmlFor="name">Name</label>
             <input
@@ -78,7 +76,7 @@ async function handleFormSubmit(event) {
               onChange={handleStringFieldChange}
             ></textarea>
             <span className="note">
-              Enter a brief description of the restaurant.
+              Enter a brief description of the date location.
             </span>
           </p>
           <p className="form-input">

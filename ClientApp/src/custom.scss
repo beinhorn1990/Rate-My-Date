@@ -19,6 +19,7 @@
   font-weight: bold;
   font-size: 4rem;
   text-decoration: underline;
+  color: white;
 }
 
 .reviewtext {
@@ -164,6 +165,14 @@ header nav a {
 
 hr {
   border: thin solid var(--purple-0);
+}
+
+.addadatelocation {
+  color: white;
+}
+
+.errormessagenewlocation {
+  color: red;
 }
 
 .search {
@@ -453,6 +462,11 @@ label[for]:hover {
 
 .fa-plus {
   color: red;
+}
+
+.hereareyoursearchresults {
+  margin-top: 25px;
+  padding-top: 55px;
 }
 
 h2 {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 import { Location } from './pages/LocationPage'
 
 import './custom.scss'

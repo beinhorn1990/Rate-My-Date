@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Stars } from '../pages/Stars'
 
 function SingleDateLocationFromList(props) {
   return (
@@ -10,12 +11,8 @@ function SingleDateLocationFromList(props) {
         </Link>
         </h2>
       <p>
-        <span
-          className="stars"
-          style={{ '--rating': 4.7 }}
-          aria-label="Star rating of this location is 4.7 out of 5."
-        ></span>
-       ({props.datelocation.reviews.length})
+        <Stars datelocation={props.datelocation} />(
+        {props.datelocation.reviews.length})
       </p>
       <address>{props.datelocation.address}</address>
     </li>

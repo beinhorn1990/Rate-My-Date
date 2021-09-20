@@ -1,6 +1,7 @@
 import React, { useState} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import format from 'date-fns/format'
+import { Stars } from '../pages/Stars'
 
 export function Location() {
  const params = useParams()
@@ -80,12 +81,7 @@ const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
           <h2>{location.name}</h2>
         </nav>
         <p>
-          <span
-            className="stars"
-            style={{ '--rating': 4.7 }}
-            aria-label="Star rating of this location is 4.7 out of 5."
-          ></span>
-        ({location.reviews.length})
+         <Stars location={location} />({location.reviews.length})
         </p>
         <address>{location.address}</address>
         <p>{location.description}</p>

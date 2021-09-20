@@ -1,5 +1,6 @@
 import React, { useState} from 'react'
 import { Link, useParams } from 'react-router-dom'
+import format from 'date-fns/format'
 
 export function Location() {
  const params = useParams()
@@ -19,6 +20,8 @@ export function Location() {
    stars: 0,
    locationID: id,
  })
+
+const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
 
  function handleNewReviewTextFieldChange(event) {
    const name = event.target.name
@@ -103,7 +106,7 @@ export function Location() {
                   style={{ '--rating': review.stars }}
                   aria-label={`Star rating of this location is ${review.stars} out of 5.`}
                 ></span>
-                <time>{review.createdAt}</time>
+                <time>{format(new Date(review.createdAt), dateFormat)}</time>
               </div>
             </li>
           ))}

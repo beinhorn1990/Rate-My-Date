@@ -8,7 +8,15 @@ export function Homepage() {
       <header><i className="title">Rate my Date! (location)</i>
             <nav>
                <Link to="/new">
-               <i className="addadatelocation"> Add a Date Location</i>
+               <i className="addadatelocation"> Add a Date Location Here!</i>
+                </Link>
+
+                <Link to="/">
+               <i className="addadatelocation"> Search for a Date Location Here!</i>
+                </Link>
+
+                <Link to="/delete">
+               <i className="addadatelocation"> Info on How to Get a Date Location Deleted Here!</i>
                 </Link>
              
             </nav>
@@ -32,14 +40,6 @@ export function Homepage() {
         <i className="mapimage">
         <img src={themap} alt="map"/></i>
 
-        <form className="search">
-          <input type="text" placeholder="Search..." />
-        </form>
-  <p>
-            <input type="submit" value="Submit" /> <input type="submit" value="Advanced Filters" />
-         
-          </p> 
-       
       </main>
       <footer>
           <i className="locationsfooter"> Built in 2021. Contact <a href="mailto:BEinhorn90@gmail.com">Brendan Einhorn</a> with any questions or concerns. </i>

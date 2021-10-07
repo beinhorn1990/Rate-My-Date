@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
-import { Location } from './pages/LocationPage'
 
 import './custom.scss'
 import { NewLocation } from './pages/NewLocation'
 import { SearchResults } from './pages/SearchResults'
 import { Homepage } from './pages/Homepage'
+import { Location } from './pages/LocationPage'
+import { Delete } from './pages/Delete'
 
 export function App() {
   return (
@@ -19,8 +20,11 @@ export function App() {
       <Route exact path="/home">
         <Homepage />
       </Route>
-      <Route exact path="/SearchResults/:id">
+      <Route exact path="/location">
         <Location />
+      </Route>
+      <Route exact path="/delete">
+        <Delete />
       </Route>
     </Switch>
   )

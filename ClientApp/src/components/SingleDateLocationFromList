@@ -1,0 +1,20 @@
+function SingleDateLocationFromList(props) {
+  return (
+    ...
+    code for a single date location
+  )
+}
+function DateLocationList() {
+  ... other content ...
+  return (...
+     ... other content
+     <ul className="results">
+        {dateLocations.map((dateLocation) => (
+          <SingleDateLocationFromList
+            key={dateLocation.id}
+            restaurant={dateLocations}
+          />
+        ))}
+      </ul>
+     ... other content
+}

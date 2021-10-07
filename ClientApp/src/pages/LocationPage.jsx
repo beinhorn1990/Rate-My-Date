@@ -31,7 +31,7 @@ const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
       setNewReview({ ...newReview, [name]: value })
     }
 
-    async function handleNewReviewSumbit(event) {
+    async function handleNewReviewSubmit(event) {
       event.preventDefault()
 
       await fetch(`/api/Reviews`, {
@@ -108,7 +108,7 @@ const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
           ))}
         </ul>
         <h3>Enter your own review</h3>
-        <form onSubmit={handleNewReviewSumbit}>
+        <form onSubmit={handleNewReviewSubmit}>
           <p className="form-input">
             <label htmlFor="summary">Summary</label>
             <input

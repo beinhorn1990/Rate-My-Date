@@ -6,7 +6,7 @@ function SingleDateLocationFromList(props) {
   return (
     <li>
       <h2>
-        <Link to={`/DateLocation/${props.datelocation.id}`}>
+        <Link to={`/location/${props.datelocation.id}`}>
         {props.datelocation.name}
         </Link>
         </h2>
@@ -46,11 +46,15 @@ export function SearchResults() {
          <i className="title">Rate my Date! (location)</i>
             <nav>
               <Link to="/new">
-               <i className="addadatelocation"> Add a Date Location</i>
+               <i className="addadatelocation"> Add a Date Location Here!</i>
                 </Link>
               <Link to="/home">
-                 <i className="homepagenav">Return to the Home Page!</i>
+                 <i className="homepagenav">Return to the Home Page Here!</i>
                  </Link>
+                 
+                  <Link to="/delete">
+               <i className="addadatelocation"> Info on How to Get a Date Location Deleted Here!</i>
+                </Link>
             </nav>
       </header>
       <main className="pagesearcresults">

@@ -46,8 +46,16 @@ async function handleFormSubmit(event) {
         <i className="title">Rate my Date! (location)</i>
             <nav>
               <Link to="/home">
-                 <i className="homepagenav">Return to the Home Page!</i>
+                 <i className="homepagenav">Return to the Home Page Here!</i>
                  </Link>
+
+                 <Link to="/">
+               <i className="addadatelocation"> Search for a Date Location Here!</i>
+                </Link>
+
+                <Link to="/delete">
+               <i className="addadatelocation"> Info on How to Get a Date Location Deleted Here!</i>
+                </Link>
             </nav>
       </header>
        <main className="page">

@@ -48,9 +48,9 @@ export function SearchResults() {
               <Link to="/new">
                <i className="addadatelocation"> Add a Date Location</i>
                 </Link>
-              <a href="./src/pages/Homepage">
+              <Link to="/home">
                  <i className="homepagenav">Return to the Home Page!</i>
-              </a>
+                 </Link>
             </nav>
       </header>
       <main className="pagesearcresults">

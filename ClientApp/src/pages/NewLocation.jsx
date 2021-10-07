@@ -45,9 +45,9 @@ async function handleFormSubmit(event) {
       <header>
         <i className="title">Rate my Date! (location)</i>
             <nav>
-              <a href="./src/pages/Homepage">
+              <Link to="/home">
                  <i className="homepagenav">Return to the Home Page!</i>
-              </a>
+                 </Link>
             </nav>
       </header>
        <main className="page">

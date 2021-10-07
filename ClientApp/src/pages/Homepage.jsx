@@ -1,22 +1,16 @@
 import React from 'react'
 import themap from "../Images/themap.png"
+import { Link } from 'react-router-dom'
 
 export function Homepage() {
   return (
     <>
       <header><i className="title">Rate my Date! (location)</i>
             <nav>
-              <a href="./src/pages/NewLocation">
-                <i className="homepagenav"><i className="hover">Add Date Location!</i></i>
-              </a>
-
-              <a href="./src/pages/SignUp">
-                <i className="homepagenav">Sign Up!</i>
-              </a>
+               <Link to="/new">
+               <i className="addadatelocation"> Add a Date Location</i>
+                </Link>
              
-              <a href="./src/pages/SignIn">
-                <i className="homepagenav">Sign In!</i> 
-              </a>
             </nav>
  
         

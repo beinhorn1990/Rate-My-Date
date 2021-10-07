@@ -5,6 +5,7 @@ import { Location } from './pages/LocationPage'
 import './custom.scss'
 import { NewLocation } from './pages/NewLocation'
 import { SearchResults } from './pages/SearchResults'
+import { Homepage } from './pages/Homepage'
 
 export function App() {
   return (
@@ -14,6 +15,9 @@ export function App() {
       </Route>
       <Route exact path="/new">
         <NewLocation />
+      </Route>
+      <Route exact path="/home">
+        <Homepage />
       </Route>
       <Route exact path="/SearchResults/:id">
         <Location />
